@@ -34,6 +34,7 @@ body {
 .input-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #1A1D3B;
   padding: 12px;
   border-radius: 8px;
@@ -61,7 +62,7 @@ body {
   text-align: right;
   font-size: 18px;
   color: white;
-  width: 100px;
+  width: fit-content;
   outline: none;
 }
 
@@ -90,6 +91,36 @@ body {
 .swap-arrow:hover {
   background-color: #2B2F51;
   animation: spin 2s linear infinite;
+}
+
+.selected-option {
+  margin: 0 10px;
+}
+
+.option-container {
+  padding: 2px 4px; 
+  height: 32px;
+}
+
+.option-img {
+  margin: 0 10px;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.error-message {
+  color: #de3d74;
+  font-size: 16px;
+  margin-bottom: 6px;
+  line-height: 24px;
 }
 
 @keyframes spin {

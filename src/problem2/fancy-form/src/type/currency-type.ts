@@ -8,6 +8,7 @@ type TCurrency = {
 type TSelectOption = {
   value: string;
   label: string;
+  icon?: string;
 }
 
 export type { TCurrency, TSelectOption }

@@ -11,7 +11,7 @@ const latestByCurrency = (currencies: TCurrency[]): TCurrency[] => {
 
   return Array.from(latestMap.values()).map((currency) => ({
     ...currency,
-    icon: `../public/currencies-icon/${currency.currency.toUpperCase()}.svg`,
+    icon: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${currency.currency}.svg`,
     date: currency.date ? new Date(currency.date) : '',
   }));
 };
