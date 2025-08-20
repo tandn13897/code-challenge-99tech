@@ -1,112 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Select, { type GroupBase, type StylesConfig } from "react-select";
 import RotateIcon from "./assets/rotate-icon.svg";
 import type { TCurrency, TSelectOption } from "./type/currency-type";
 import { latestByCurrency } from "./helper/helper";
 import "./fancy-form.css";
-import {
-  components,
-  type SingleValueProps,
-  type OptionProps,
-} from "react-select";
+import CurrencySelect from "./components/select-component";
 
 const defaultCurrency: TCurrency = {
   currency: "",
   price: "",
   date: "",
   icon: "",
-};
-
-const customStyles: StylesConfig<
-  TSelectOption,
-  false,
-  GroupBase<TSelectOption>
-> = {
-  control: () => ({
-    backgroundColor: "transparent",
-    border: "none",
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
-    minHeight: "unset",
-    height: "32px",
-    width: "100%",
-  }),
-  dropdownIndicator: (base) => ({
-    ...base,
-    color: "white",
-    padding: 0,
-  }),
-  indicatorsContainer: (base) => ({
-    ...base,
-    height: "32px",
-  }),
-  menu: (base) => ({
-    ...base,
-    backgroundColor: "#1A1D3B",
-    color: "white",
-    paddingTop: "4px",
-    paddingBottom: "4px",
-    minWidth: "200px",
-    width: "auto",
-    zIndex: 9999,
-  }),
-  menuList: (base) => ({
-    ...base,
-    padding: 0,
-  }),
-  singleValue: (base) => ({
-    ...base,
-    display: "flex",
-    alignItems: "center",
-    color: "white",
-  }),
-  input: (base) => ({
-    ...base,
-    color: "white",
-    margin: 0,
-    padding: 0,
-  }),
-  valueContainer: (base) => ({
-    ...base,
-    display: "flex",
-    alignItems: "center",
-    gap: "0.5rem",
-    padding: 0,
-  }),
-};
-
-const customSingleValue = (props: SingleValueProps<TSelectOption>) => {
-  const { data } = props;
-
-  return (
-    <components.SingleValue {...props}>
-      <div className="flex items-center gap-2">
-        <img
-          src={data.icon}
-          className="selected-option w-5 h-5"
-        />
-        <span>{data.label}</span>
-      </div>
-    </components.SingleValue>
-  );
-};
-
-const customOption = (props: OptionProps<TSelectOption>) => {
-  const { data, innerRef, innerProps, isFocused } = props;
-
-  return (
-    <div
-      ref={innerRef}
-      {...innerProps}
-      className={`option-container flex items-center gap-2 px-3 py-2 cursor-pointer rounded ${
-        isFocused ? "bg-[#2B2F51]" : "bg-[#1A1D3B]"
-      } last:mb-0`}
-    >
-      <img src={data.icon} className="w-5 h-5 option-img" />
-      <span className="text-white text-sm">{data.label}</span>
-    </div>
-  );
 };
 
 const Swap: React.FC = () => {
@@ -199,7 +102,7 @@ const Swap: React.FC = () => {
         </div>
         <div className="input-container">
           <div className="w-[140px]">
-            <Select
+            <CurrencySelect
               value={{
                 value: fromCurrency.currency,
                 label: fromCurrency.currency,
@@ -212,12 +115,6 @@ const Swap: React.FC = () => {
                 );
                 if (token) setFromCurrency(token);
               }}
-              components={{
-                SingleValue: customSingleValue,
-                Option: customOption,
-              }}
-              styles={customStyles}
-              isSearchable={false}
             />
           </div>
 
@@ -244,7 +141,7 @@ const Swap: React.FC = () => {
         </div>
         <div className="input-container">
           <div className="w-[140px]">
-            <Select
+            <CurrencySelect
               value={{
                 value: toCurrency.currency,
                 label: toCurrency.currency,
@@ -257,12 +154,6 @@ const Swap: React.FC = () => {
                 );
                 if (token) setToCurrency(token);
               }}
-              components={{
-                SingleValue: customSingleValue,
-                Option: customOption,
-              }}
-              styles={customStyles}
-              isSearchable={false}
             />
           </div>
           <input

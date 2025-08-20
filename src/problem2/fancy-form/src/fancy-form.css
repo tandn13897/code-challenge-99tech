@@ -1,8 +1,15 @@
 body {
-  width: 100vw;
-  height: 100vh;
+  background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+  min-height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .swap-container {
@@ -121,6 +128,33 @@ input[type='number'] {
   font-size: 16px;
   margin-bottom: 6px;
   line-height: 24px;
+}
+
+.swap-submit__btn {
+  background: linear-gradient(135deg, #4fcac7, #6a67ce);
+  color: #1e1e8b;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(79, 202, 199, 0.4);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.swap-submit__btn:hover {
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 202, 199, 0.6);
+  background: linear-gradient(135deg, #6a67ce, #4fcac7);
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes spin {

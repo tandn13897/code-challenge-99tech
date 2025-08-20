@@ -1,5 +1,17 @@
 import type { TCurrency } from '../type/currency-type';
 
+const currencyIconNameMap: Record<string, string> = {
+  STEVMOS: "stEVMOS",
+  RATOM: "rATOM",
+  STOSMO: "stOSMO",
+  STATOM: "stATOM",
+  STLUNA: "stLUNA",
+};
+
+export function normalizeCurrencyNameForIcon(currency: string): string {
+  return currencyIconNameMap[currency] || currency;
+}
+
 const latestByCurrency = (currencies: TCurrency[]): TCurrency[] => {
   const latestMap = currencies.reduce((map, item) => {
     const existing = map.get(item.currency);
@@ -11,7 +23,7 @@ const latestByCurrency = (currencies: TCurrency[]): TCurrency[] => {
 
   return Array.from(latestMap.values()).map((currency) => ({
     ...currency,
-    icon: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${currency.currency}.svg`,
+    icon: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${normalizeCurrencyNameForIcon(currency.currency)}.svg`,
     date: currency.date ? new Date(currency.date) : '',
   }));
 };
