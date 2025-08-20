@@ -130,6 +130,17 @@ input[type='number'] {
   line-height: 24px;
 }
 
+.ratio-display {
+  text-align: center;
+  color: #b0b0b0;
+  font-size: 14px;
+  margin: 12px 0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
 .swap-submit__btn {
   background: linear-gradient(135deg, #4fcac7, #6a67ce);
   color: #1e1e8b;

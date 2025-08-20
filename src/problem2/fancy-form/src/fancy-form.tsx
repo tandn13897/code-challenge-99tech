@@ -20,6 +20,11 @@ const Swap: React.FC = () => {
   const [fromAmount, setFromAmount] = useState(0);
   const [toAmount, setToAmount] = useState(0);
 
+  const fromPrice = Number(fromCurrency.price);
+  const toPrice = Number(toCurrency.price);
+
+  const ratio = fromPrice && toPrice ? (fromPrice / toPrice).toFixed(6) : null;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -168,6 +173,13 @@ const Swap: React.FC = () => {
 
       <div className="swap-submit__ctn flex flex-col justify-center items-center">
         {error && <div className="error-message">{error}</div>}
+        {ratio && (
+          <div className="ratio-display">
+            1 {fromCurrency.currency} ≈ {ratio} {toCurrency.currency}
+            <br />1 {toCurrency.currency} ≈ {(1 / Number(ratio)).toFixed(6)}{" "}
+            {fromCurrency.currency}
+          </div>
+        )}
         <button
           className="swap-submit__btn bg-[#4fcac7] text-[#1e1e8b]"
           onClick={handleConvertCurrency}
